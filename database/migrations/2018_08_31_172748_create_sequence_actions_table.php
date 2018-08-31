@@ -15,6 +15,10 @@ class CreateSequenceActionsTable extends Migration
     {
         Schema::create('sequence_actions', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('name');
+            $table->text('description');
+            $table->unsignedInteger('action_id');
+            $table->integer('order');
             $table->timestamps();
         });
     }

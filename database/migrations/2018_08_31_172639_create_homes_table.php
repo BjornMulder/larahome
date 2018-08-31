@@ -15,6 +15,9 @@ class CreateHomesTable extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('name');
+            $table->text('description');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
