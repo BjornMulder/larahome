@@ -18,6 +18,7 @@ class CreateSequenceActionsTable extends Migration
             $table->text('name');
             $table->text('description');
             $table->unsignedInteger('action_id');
+            $table->unsignedInteger('sequence_id');
             $table->integer('order');
             $table->timestamps();
         });

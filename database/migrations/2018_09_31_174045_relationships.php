@@ -22,6 +22,7 @@ class Relationships extends Migration
 
         Schema::table('sequence_actions', function (Blueprint $table) {
             $table->foreign('action_id')->references('id')->on('actions');
+            $table->foreign('sequence_id')->references('id')->on('sequences');
         });
 
         Schema::table('action_parameters', function (Blueprint $table) {
