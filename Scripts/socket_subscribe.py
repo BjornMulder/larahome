@@ -8,12 +8,12 @@ import json
 
 import asyncws
 
-ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI3ZDg2Mzc3NzIwYjQ0M2YyOWI2MzE2ZTdmMjI3Njc0OCIsImlhdCI6MTU0MzYwMTY1OCwiZXhwIjoxODU4OTYxNjU4fQ.uSatzdHOC-ozC9OnI0pUk63Mtuawy7bauRG6k-swP9g'
+ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1YWY3ZDA4MWFmNDU0OTIwYjJmYjdjNGU5MDRmM2QzMCIsImlhdCI6MTYwNjMyNzg1MywiZXhwIjoxOTIxNjg3ODUzfQ.pnq0iSiNlSUMt7TxQDIdGsT9vTaZsQJ_cimmAZNtniw'
 
 
 async def main():
     """Simple WebSocket client for Home Assistant."""
-    websocket = await asyncws.connect('ws://localhost:8123/api/websocket')
+    websocket = await asyncws.connect('ws:https://zvwnrhcuc1hwic4kygjm8r7vaezayabi.ui.nabu.casa/api/websocket')
 
     await websocket.send(json.dumps(
         {'type': 'auth',
@@ -32,4 +32,4 @@ async def main():
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
-loop.close()
+loop.close(sudo apt install python3-pip)
