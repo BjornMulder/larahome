@@ -1,35 +1,49 @@
 #!/usr/bin/python3
-#
-# Copyright (c) 2017-2018, Fabian Affolter <fabian@affolter-engineering.ch>
-# Released under the ASL 2.0 license. See LICENSE.md file for details.
-#
-import asyncio
+import websocket
 import json
+from urllib import request, parse
+try:
+    import thread
+except ImportError:
+    import _thread as thread
+import time
 
-import asyncws
+ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyMWY1NTMxZmU3Yjk0ZGNmYjVkMzkxMjI2Y2MxMTY1MSIsImlhdCI6MTYwODQ3MDUxNCwiZXhwIjoxOTIzODMwNTE0fQ.mmaXUP7PM6QqQZHMgdhILloVnPChVzv1YJLvFAWJYi4'
 
-ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1YWY3ZDA4MWFmNDU0OTIwYjJmYjdjNGU5MDRmM2QzMCIsImlhdCI6MTYwNjMyNzg1MywiZXhwIjoxOTIxNjg3ODUzfQ.pnq0iSiNlSUMt7TxQDIdGsT9vTaZsQJ_cimmAZNtniw'
+def on_message(ws, message):
+    data = parse.urlencode(message).encode()
+    req =  request.Request(<your url>, data=data) # this will make the method "POST"
+    resp = request.urlopen(req)
+    print(message)
 
+def on_error(ws, error):
+    print(error)
 
-async def main():
-    """Simple WebSocket client for Home Assistant."""
-    websocket = await asyncws.connect('ws:https://zvwnrhcuc1hwic4kygjm8r7vaezayabi.ui.nabu.casa/api/websocket')
+def on_close(ws):
+    print("### closed ###")
 
-    await websocket.send(json.dumps(
+def on_open(ws):
+    def run(*args):
+        for i in range(1):
+            time.sleep(1)
+            ws.send(json.dumps(
         {'type': 'auth',
          'access_token': ACCESS_TOKEN}
-    ))
+        ))
+            ws.send(json.dumps(
+                {'id': 1, 'type': 'subscribe_events', 'event_type': 'state_changed'}
+            ))
+        time.sleep(1)
+    thread.start_new_thread(run, ())
 
-    await websocket.send(json.dumps(
-        {'id': 1, 'type': 'subscribe_events', 'event_type': 'state_changed'}
-    ))
 
-    while True:
-        message = await websocket.recv()
-        if message is None:
-            break
-        print (message)
+if __name__ == "__main__":
+    websocket.enableTrace(True)
+    ws = websocket.WebSocketApp("wss://bjornmulder.duckdns.org:8123/api/websocket",
+                              on_message = on_message,
+                              on_error = on_error,
+                              on_close = on_close)
+    ws.on_open = on_open
+    ws.run_forever()
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
-loop.close()
+
