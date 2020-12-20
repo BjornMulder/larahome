@@ -25,9 +25,6 @@ class EntityIngressCommand extends Command
 
         $results = json_decode($service->get('/api/states'));
 
-        $bar = $this->output->createProgressBar(count($results));
-        $bar->start();
-
         foreach ($results as $result) {
             $domainName = explode('.', $result->entity_id)[0];
             $domainRecord = Domain::firstOrCreate(['name' => $domainName]);
@@ -44,10 +41,6 @@ class EntityIngressCommand extends Command
             ],[
                 'state' => $result->state,
             ]);
-
-            $bar->advance();
         }
-
-        $bar->finish();
     }
 }

@@ -20,5 +20,10 @@ class Entity extends Model
         return $this->belongsTo(Domain::class);
     }
 
+    public function state()
+    {
+        return $this->hasOne(EntityState::class);
+    }
+
 }
 
