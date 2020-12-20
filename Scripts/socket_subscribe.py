@@ -11,9 +11,12 @@ import time
 ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyMWY1NTMxZmU3Yjk0ZGNmYjVkMzkxMjI2Y2MxMTY1MSIsImlhdCI6MTYwODQ3MDUxNCwiZXhwIjoxOTIzODMwNTE0fQ.mmaXUP7PM6QqQZHMgdhILloVnPChVzv1YJLvFAWJYi4'
 
 def on_message(ws, message):
-    data = parse.urlencode(message).encode()
-    req =  request.Request(<your url>, data=data) # this will make the method "POST"
+    obj = json.loads(message)
+    data = parse.urlencode(obj).encode()
+
+    req =  request.Request("http://37.97.131.42/api/state-changed", data=data) 
     resp = request.urlopen(req)
+
     print(message)
 
 def on_error(ws, error):
