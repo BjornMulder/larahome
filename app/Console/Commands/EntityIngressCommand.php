@@ -29,18 +29,14 @@ class EntityIngressCommand extends Command
             $domainName = explode('.', $result->entity_id)[0];
             $domainRecord = Domain::firstOrCreate(['name' => $domainName]);
 
-            $entity = Entity::firstOrCreate(
+             Entity::firstOrCreate(
                 ['entity_id' => $result->entity_id,],
                 [
                     'domain_id' => $domainRecord->id,
                     'attributes' => json_encode($result->attributes),
+                    'context' => json_encode($result->context),
+                    'state' => $result->state,
                 ]);
-
-            EntityState::firstOrCreate([
-                'entity_id' => $entity->id,
-            ],[
-                'state' => $result->state,
-            ]);
         }
     }
 }

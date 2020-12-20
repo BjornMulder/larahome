@@ -1,0 +1,55 @@
+{
+    "id": 1,
+    "type": "event",
+    "event": {
+        "event_type": "state_changed",
+        "data": {
+            "entity_id": "light.color_temperature_light_2",
+            "old_state": {
+                "entity_id": "light.color_temperature_light_2",
+                "state": "off",
+                "attributes": {
+                    "min_mireds": 140,
+                    "max_mireds": 650,
+                    "is_deconz_group": false,
+                    "friendly_name": "Spot front",
+                    "supported_features": 43
+                },
+                "last_changed": "2020-12-20T12:58:30.415809+00:00",
+                "last_updated": "2020-12-20T12:58:30.415809+00:00",
+                "context": {
+                    "id": "c5236f29f61c22a6de762b623771acc6",
+                    "parent_id": null,
+                    "user_id": null
+                }
+            },
+            "new_state": {
+                "entity_id": "light.color_temperature_light_2",
+                "state": "on",
+                "attributes": {
+                    "min_mireds": 140,
+                    "max_mireds": 650,
+                    "brightness": 148,
+                    "color_temp": 454,
+                    "is_deconz_group": false,
+                    "friendly_name": "Spot front",
+                    "supported_features": 43
+                },
+                "last_changed": "2020-12-20T18:55:23.490124+00:00",
+                "last_updated": "2020-12-20T18:55:23.490124+00:00",
+                "context": {
+                    "id": "018e6866ac671d7e1333d070383053e7",
+                    "parent_id": null,
+                    "user_id": "023e4f6c1fb045bebbe89f73e5731140"
+                }
+            }
+        },
+        "origin": "LOCAL",
+        "time_fired": "2020-12-20T18:55:23.490124+00:00",
+        "context": {
+            "id": "018e6866ac671d7e1333d070383053e7",
+            "parent_id": null,
+            "user_id": "023e4f6c1fb045bebbe89f73e5731140"
+        }
+    }
+}

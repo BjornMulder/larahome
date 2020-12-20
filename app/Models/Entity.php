@@ -12,18 +12,14 @@ class Entity extends Model
         'id',
         'domain_id',
         'entity_id',
+        'state',
         'attributes',
+        'context',
     ];
 
     public function domain()
     {
         return $this->belongsTo(Domain::class);
     }
-
-    public function state()
-    {
-        return $this->hasOne(EntityState::class);
-    }
-
 }
 

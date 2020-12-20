@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+chmod -R 777 storage bootstrap/cache#!/usr/bin/python3
 import websocket
 import json
 from urllib import request, parse
