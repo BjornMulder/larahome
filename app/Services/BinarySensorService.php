@@ -16,8 +16,9 @@ class BinarySensorService
 
     public function handle($entity) {
         if ($entity->entity_id === "binary_sensor.tradfri_motion_sensor") {
-            $result = $this->hassApiService->callService('light', 'turn_on', ['entity_id' => 'light.closet'] );
-	    dump($result);
+            $this->hassApiService->callService('light', 'turn_on', ['entity_id' => 'light.closet'] );
+            sleep(10);
+            $this->hassApiService->callService('light', 'turn_off', ['entity_id' => 'light.closet'] );
         }
     }
 }
