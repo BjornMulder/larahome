@@ -23,14 +23,17 @@ class StateUpdateCommand extends Command
     {
         $eventData = json_decode($this->argument('data'))->event->data;
 
-        $entity = Entity::where('entity_id', $eventData->entity_id)->update([
+        Entity::where('entity_id', $eventData->entity_id)->update([
             'attributes' => json_encode($eventData->new_state->attributes),
             'context' => json_encode($eventData->new_state->context),
             'state' => $eventData->new_state->state,
             'old_attributes' => json_encode($eventData->old_state->attributes),
             'old_context' => json_encode($eventData->old_state->context),
             'old_state' => $eventData->old_state->state,
-        ])->first();
+        ]);
+
+        $entity = Entity::where('entity_id', $eventData->entity_id)->first();
+
 
         StateChangedEvent::dispatch($entity);
     }
