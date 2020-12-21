@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     protected function shortSchedule(\Spatie\ShortSchedule\ShortSchedule $shortSchedule)
     {
         // this artisan command will run every second
-        $shortSchedule->command('hass:updatestate')->everySecond();
+        $shortSchedule->command('hass:checktimers')->everySeconds(30);
     }
 
     /**

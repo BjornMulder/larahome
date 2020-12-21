@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Http\Services\HassApiService;
 use App\Models\Domain;
 use App\Models\Entity;
-use App\Models\EntityState;
 use Illuminate\Console\Command;
 
 class EntityIngressCommand extends Command
