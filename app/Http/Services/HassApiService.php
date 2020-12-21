@@ -32,7 +32,7 @@ class HassApiService
 
     public function callService(string $domain, string $service, array $query = [])
     {
-        $response = $this->client->request('GET', '/' . $domain . '/' . $service,
+        $response = $this->client->request('GET', '/api/' . $domain . '/' . $service,
             ['headers' => $this->headers, 'query' => $query]
         );
 
