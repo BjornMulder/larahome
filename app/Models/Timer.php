@@ -13,7 +13,7 @@ class Timer extends Model
         'entity_id',
         'domain',
         'service',
-        'timeout',
+        'duration',
         'created_at',
         'updated_at',
     ];
