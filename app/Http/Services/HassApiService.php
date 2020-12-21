@@ -30,9 +30,9 @@ class HassApiService
         return $response->getBody()->getContents();
     }
 
-    public function post(string $path, array $query = [])
+    public function callService(string $domain, string $service, array $query = [])
     {
-        $response = $this->client->request('GET', $path,
+        $response = $this->client->request('GET', '/' . $domain . '/' . $service,
             ['headers' => $this->headers, 'query' => $query]
         );
 

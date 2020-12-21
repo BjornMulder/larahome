@@ -18,8 +18,4 @@ class StateChangedEvent
         $this->entity = $entity;
     }
 
-    public function handle(StateChangedEvent $event)
-    {
-        dd($event->entity);
-    }
 }

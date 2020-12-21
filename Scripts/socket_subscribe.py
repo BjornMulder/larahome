@@ -19,7 +19,7 @@ def on_message(ws, message):
     if obj.get('type') == "event":
         os.system(command)
 
-    print(message)
+#    print(message)
 
 def on_error(ws, error):
     print(error)

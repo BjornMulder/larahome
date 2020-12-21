@@ -34,7 +34,6 @@ class StateUpdateCommand extends Command
 
         $entity = Entity::where('entity_id', $eventData->entity_id)->first();
 
-
-        StateChangedEvent::dispatch($entity);
+        event(new StateChangedEvent($entity));
     }
 }
