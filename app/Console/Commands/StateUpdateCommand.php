@@ -27,9 +27,9 @@ class StateUpdateCommand extends Command
             'attributes' => json_encode($eventData->new_state->attributes),
             'context' => json_encode($eventData->new_state->context),
             'state' => $eventData->new_state->state,
-            'attributes' => json_encode($eventData->old_state->attributes),
-            'context' => json_encode($eventData->old_state->context),
-            'state' => $eventData->old_state->state,
+            'old_attributes' => json_encode($eventData->old_state->attributes),
+            'old_context' => json_encode($eventData->old_state->context),
+            'old_state' => $eventData->old_state->state,
         ]);
     }
 }
