@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import websocket
 import json
+import os
 from urllib import request, parse
 try:
     import thread
@@ -12,14 +13,11 @@ ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyMWY1NTMxZmU3Yjk
 
 def on_message(ws, message):
     obj = json.loads(message)
-    data = parse.urlencode(obj).encode()
-    print("===========================================================")
-    print(obj.get('type'))
-    print("===========================================================")
+    data = json.dumps(obj)
+    command = "php artisan hass:updatestate '{}'".format(data)
 
     if obj.get('type') == "event":
-        req =  request.Request("http://37.97.131.42/api/state-changed", data=data)
-        resp = request.urlopen(req)
+        os.system(command)
 
     print(message)
 

@@ -21,9 +21,7 @@ class StateUpdateCommand extends Command
 
     public function handle()
     {
-        $eventData = $this->input('data');
-        dd($eventData);
-
+        $eventData = $this->argument('data');
 
         Entity::where('entity_id', $eventData->entity_id)->update([
             'attributes' => json_encode($eventData->attributes),
