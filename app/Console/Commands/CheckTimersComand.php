@@ -27,6 +27,7 @@ class CheckTimersComand extends Command
 
        foreach ($timers as $timer) {
            if ($timer->updated_at->diffInSeconds(Carbon::now()) > $timer->duration) {
+               dd($timer->domain, $timer->service, $timer->entity_id, $timer->duration);
                $this->hassApiService->callService($timer->domain, $timer->service, ['entity_id' => $timer->entity_id] );
                Timer::destroy($timer->id);
            }

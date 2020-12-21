@@ -20,7 +20,7 @@ class BinarySensorService
         // Closet motion sensor flow
         if ($entity->entity_id === "binary_sensor.tradfri_motion_sensor" && $entity->state === "on") {
             $this->hassApiService->callService('light', 'turn_on', ['entity_id' => 'light.closet'] );
-            $this->timerService->set($entity->entity_id, $entity->domain->name, 'turn_off', 300);
+            $this->timerService->set("light.closet", 'light', 'turn_off', 300);
         }
     }
 }
