@@ -24,12 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('hass:checktimers')->everyMinute();
     }
 
     protected function shortSchedule(\Spatie\ShortSchedule\ShortSchedule $shortSchedule)
     {
         // this artisan command will run every second
-        $shortSchedule->command('hass:checktimers')->everySeconds(30);
     }
 
     /**
