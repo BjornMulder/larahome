@@ -9,10 +9,20 @@ use App\Models\Timer;
 class TimerService
 {
     public function set($entity_id, $domain, $service, $duration) {
-        Timer::updateOrCreate([
+        if (Timer::where('entity_id', $entity_id)->count() > 0) {
+
+            Timer::where('entity_id', $entity_id)->update([
+                'duration' => $duration,
+            ]);
+
+            return;
+        }
+
+        Timer::create([
             'entity_id' => $entity_id,
             'domain' => $domain,
             'service' => $service,
-        ], ['duration' => $duration]);
+            'duration' => $duration
+        ]);
     }
 }
