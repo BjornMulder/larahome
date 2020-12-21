@@ -18,8 +18,11 @@ class CreateEntitiesTable extends Migration
             $table->unsignedBigInteger('domain_id');
             $table->string('entity_id');
             $table->text('attributes');
+            $table->text('old_attributes')->nullable();
             $table->text('context');
+            $table->text('old_context')->nullable();
             $table->string('state');
+            $table->string('old_state')->nullable();
             $table->timestamps();
 
             $table->foreign('domain_id')->references('id')->on('domains');

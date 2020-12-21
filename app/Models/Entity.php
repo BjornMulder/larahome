@@ -15,6 +15,9 @@ class Entity extends Model
         'state',
         'attributes',
         'context',
+        'old_state',
+        'old_attributes',
+        'old_context',
     ];
 
     public function domain()
