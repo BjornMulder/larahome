@@ -13,9 +13,13 @@ ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyMWY1NTMxZmU3Yjk
 def on_message(ws, message):
     obj = json.loads(message)
     data = parse.urlencode(obj).encode()
+    print("===========================================================")
+    print(obj.get('type'))
+    print("===========================================================")
 
-    req =  request.Request("http://37.97.131.42/api/state-changed", data=data) 
-    resp = request.urlopen(req)
+    if obj.get('type') == "event":
+        req =  request.Request("http://37.97.131.42/api/state-changed", data=data)
+        resp = request.urlopen(req)
 
     print(message)
 
@@ -48,5 +52,3 @@ if __name__ == "__main__":
                               on_close = on_close)
     ws.on_open = on_open
     ws.run_forever()
-
-

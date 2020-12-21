@@ -18,7 +18,6 @@ class StateChangedController extends Controller
 		    'context' => json_encode($eventData->context),
 		    'state' => $eventData->state,
 	    ]);
-
     }
 
 }

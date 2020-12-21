@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 
 class StateUpdateCommand extends Command
 {
-    protected $signature = 'hass:updatestate';
+    protected $signature = 'hass:updatestate {data}';
 
     protected $description = 'polls for updated states';
 
@@ -21,23 +21,14 @@ class StateUpdateCommand extends Command
 
     public function handle()
     {
-        $i = 0;
-        while ($i < 10) {
+        $eventData = $this->input('data');
+        dd($eventData);
 
-            $service = new HassApiService();
 
-            $results = json_decode($service->get('/api/states'));
-
-            $entities = Entity::with('state')->get();
-
-            foreach ($results as $result) {
-                $entity = $entities->where('entity_id', $result->entity_id)->first();
-                if ($entity->state->state !== $result->state) {
-                    EntityState::where('id', $entity->state->id)->update(['state' => $result->state]);
-                }
-            }
-            $i++;
-        }
-        profiler_finish('my time metric name');
+        Entity::where('entity_id', $eventData->entity_id)->update([
+            'attributes' => json_encode($eventData->attributes),
+            'context' => json_encode($eventData->context),
+            'state' => $eventData->state,
+        ]);
     }
 }
