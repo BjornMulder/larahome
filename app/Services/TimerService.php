@@ -18,7 +18,7 @@ class TimerService
             return;
         }
 
-        Timer::insert([
+        Timer::create([
             'entity_id' => $entity_id,
             'domain' => $domain,
             'service' => $service,
