@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\EntityState;
+use App\Http\Services\HassApiService;
 use App\Models\Timer;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
