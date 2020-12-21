@@ -30,7 +30,7 @@ class StateUpdateCommand extends Command
             'old_attributes' => json_encode($eventData->old_state->attributes),
             'old_context' => json_encode($eventData->old_state->context),
             'old_state' => $eventData->old_state->state,
-        ]);
+        ])->first();
 
         StateChangedEvent::dispatch($entity);
     }
