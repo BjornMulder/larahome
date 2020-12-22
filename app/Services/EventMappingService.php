@@ -11,7 +11,7 @@ class EventMappingService
     public function __construct(BinarySensorService $binarySensorService, PersonService $personService)
     {
         $this->binarySensorService = $binarySensorService;
-        $this->personService = $personService
+        $this->personService = $personService;
     }
 
     public function map($entity)
