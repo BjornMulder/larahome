@@ -22,6 +22,7 @@ class PersonService
 
     public function handle($entity) {
 
+        dump("handlingpersonservice");
         // Sarah leaves
         if ($entity->entity_id === "person.sarah" && $entity->state === "away") {
             if ($this->entityStateService->checkState('person.bjorn_mulder', "away")) {

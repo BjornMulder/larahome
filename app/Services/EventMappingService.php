@@ -18,6 +18,7 @@ class EventMappingService
     {
         $entityDomain = $entity->domain->name;
 
+        dump($entityDomain);
         switch ($entityDomain) {
             case "binary_sensor":
                 $this->binarySensorService->handle($entity);
