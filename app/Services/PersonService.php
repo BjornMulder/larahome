@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Services\GoogleHomeService;
 use App\Http\Services\HassApiService;
 
 class PersonService
