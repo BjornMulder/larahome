@@ -25,7 +25,7 @@ class PersonService
             dump("sarah leaving");
             if ($this->entityStateService->checkState('person.bjorn_mulder', "away")) {
                 dump("sarah leaving and bjorn not home");
-                //$this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
+                $this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
             }
         }
 
@@ -34,7 +34,7 @@ class PersonService
             dump("bjorn leaving");
             if ($this->entityStateService->checkState('person.sarah', "away")) {
                 dump("bjorn leaving and sarah not home");
-                $this->hassApiService->callService('light', 'light.turn_off', [] );
+                $this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
             }
         }
     }
