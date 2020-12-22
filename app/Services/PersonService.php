@@ -22,13 +22,13 @@ class PersonService
 
         // Sarah leaves
         if ($entity->entity_id === "person.sarah" && $entity->state === "away") {
-            if ($this->entityStateService->checkState('person.bjorn', "away")) {
+            if ($this->entityStateService->checkState('person.bjorn_mulder', "away")) {
                 $this->hassApiService->callService('light', 'off', ['entity_id' => 'all'] );
             }
         }
 
         //  Bjorn Leaves
-        if ($entity->entity_id === "person.bjorn" && $entity->state === "away") {
+        if ($entity->entity_id === "person.bjorn_mulder" && $entity->state === "away") {
             if ($this->entityStateService->checkState('person.sarah', "away")) {
                 $this->hassApiService->callService('light', 'off', ['entity_id' => 'all'] );
             }
