@@ -9,15 +9,13 @@ use App\Http\Services\HassApiService;
 class PersonService
 {
     private $hassApiService;
-    private $googleHomeService;
     private $timerService;
     private $entityStateService;
-    public function __construct(HassApiService $hassApiService, TimerService $timerService, EntityStateService $entityStateService, GoogleHomeService $googleHomeService)
+    public function __construct(HassApiService $hassApiService, TimerService $timerService, EntityStateService $entityStateService)
     {
         $this->hassApiService = $hassApiService;
         $this->timerService = $timerService;
         $this->entityStateService = $entityStateService;
-        $this->googleHomeService = $googleHomeService;
     }
 
     public function handle($entity) {
@@ -28,7 +26,6 @@ class PersonService
             if ($this->entityStateService->checkState('person.bjorn_mulder', "away")) {
                 dump("sarah leaving and bjorn not home");
                 //$this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
-                $this->googleHomeService->run("Turn off all lights");
             }
         }
 
@@ -37,8 +34,7 @@ class PersonService
             dump("bjorn leaving");
             if ($this->entityStateService->checkState('person.sarah', "away")) {
                 dump("bjorn leaving and sarah not home");
-                //$this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
-                $this->googleHomeService->run("Turn off all lights");
+                $this->hassApiService->callService('light', 'light.turn_off', [] );
             }
         }
     }

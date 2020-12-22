@@ -38,5 +38,4 @@ class HassApiService
 
         return $response->getBody()->getContents();
     }
-
 }
