@@ -7,9 +7,11 @@ namespace App\Services;
 class EventMappingService
 {
     private $binarySensorService;
-    public function __construct(BinarySensorService $binarySensorService)
+    private $personService;
+    public function __construct(BinarySensorService $binarySensorService, PersonService $personService)
     {
         $this->binarySensorService = $binarySensorService;
+        $this->personService = $personService
     }
 
     public function map($entity)
@@ -19,6 +21,9 @@ class EventMappingService
         switch ($entityDomain) {
             case "binary_sensor":
                 $this->binarySensorService->handle($entity);
+                break;
+            case "person":
+                $this->personService->handle($entity);
                 break;
         }
     }
