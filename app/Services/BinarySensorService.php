@@ -31,7 +31,7 @@ class BinarySensorService
             $this->timerService->set("light.bathroom", 'light', 'turn_off', 120);
         }
         if ($entity->entity_id === "binary_sensor.bathroom_radar" && $entity->state === "on") {
-            $this->entityStateService->checkState('light.bathroom', "on");
+            if($this->entityStateService->checkState('light.bathroom', "on")) return;
             $this->timerService->set("light.bathroom", 'light', 'turn_off', 120);
         }
 
