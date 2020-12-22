@@ -22,21 +22,15 @@ class PersonService
 
         // Sarah leaves
         if ($entity->entity_id === "person.sarah" && $entity->state === "away") {
-            dump("sarah leaving");
             if ($this->entityStateService->checkState('person.bjorn_mulder', "away")) {
-                dump("sarah leaving and bjorn not home");
                 $response = $this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
-                dump($response);
             }
         }
 
         //  Bjorn Leaves
         if ($entity->entity_id === "person.bjorn_mulder" && $entity->state === "away") {
-            dump("bjorn leaving");
             if ($this->entityStateService->checkState('person.sarah', "away")) {
-                dump("bjorn leaving and sarah not home");
                 $response = $this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
-                dump($response);
             }
         }
     }
