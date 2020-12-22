@@ -27,6 +27,7 @@ class GoogleHomeService
         $response = $this->client->request('POST', '/assistant',
             ['headers' => $this->headers, 'body' => json_encode($body)]
         );
+        dump($response);
         dump('posted');
 
         return $response->getBody()->getContents();
