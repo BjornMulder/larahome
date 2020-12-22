@@ -23,14 +23,14 @@ class PersonService
         // Sarah leaves
         if ($entity->entity_id === "person.sarah" && $entity->state === "away") {
             if ($this->entityStateService->checkState('person.bjorn_mulder', "away")) {
-                $response = $this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
+                $response = $this->hassApiService->callService('light', 'turn_off', ['entity_id' => 'all'] );
             }
         }
 
         //  Bjorn Leaves
         if ($entity->entity_id === "person.bjorn_mulder" && $entity->state === "away") {
             if ($this->entityStateService->checkState('person.sarah', "away")) {
-                $response = $this->hassApiService->callService('light', 'light.turn_off', ['entity_id' => 'all'] );
+                $response = $this->hassApiService->callService('light', 'turn_off', ['entity_id' => 'all'] );
             }
         }
     }
