@@ -11,7 +11,6 @@ class StateChangedController extends Controller
     public function __invoke(Request $request)
     {
 	    $eventData = json_decode($request->getContent());
-	    dd($eventData);
 
 
 	    Entity::where('entity_id', $eventData->entity_id)->update([

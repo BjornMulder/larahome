@@ -35,7 +35,6 @@ class HassApiService
         $response = $this->client->request('POST', '/api/services/' . $domain . '/' . $service,
             ['headers' => $this->headers, 'body' => json_encode($body)]
         );
-        dump($response);
 
         return $response->getBody()->getContents();
     }
