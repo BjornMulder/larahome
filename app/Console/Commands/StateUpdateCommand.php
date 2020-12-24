@@ -5,7 +5,9 @@ namespace App\Console\Commands;
 use App\Events\StateChangedEvent;
 use App\Models\Entity;
 use App\Models\EntityState;
+use App\Models\StateLog;
 use Illuminate\Console\Command;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class StateUpdateCommand extends Command
 {
@@ -35,5 +37,7 @@ class StateUpdateCommand extends Command
         $entity = Entity::where('entity_id', $eventData->entity_id)->first();
 
         event(new StateChangedEvent($entity));
+
+        StateLog::create(['data' => $this->argument('data')]);
     }
 }
