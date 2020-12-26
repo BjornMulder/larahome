@@ -29,7 +29,7 @@ def on_close(ws):
 
 def on_open(ws):
     def run(*args):
-        for i in range(1):
+        for i in range(1000):
             time.sleep(1)
             ws.send(json.dumps(
         {'type': 'auth',

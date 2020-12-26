@@ -7,7 +7,6 @@ use App\Models\Entity;
 use App\Models\EntityState;
 use App\Models\StateLog;
 use Illuminate\Console\Command;
-use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class StateUpdateCommand extends Command
 {
