@@ -13,7 +13,7 @@ class CreateStateLogTable extends Migration
      */
     public function up()
     {
-        Schema::create('state_log', function (Blueprint $table) {
+        Schema::create('state_logs', function (Blueprint $table) {
             $table->id();
             $table->text('data');
             $table->timestamps();
