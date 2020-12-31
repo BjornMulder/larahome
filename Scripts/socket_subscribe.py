@@ -25,11 +25,12 @@ def on_error(ws, error):
     print(error)
 
 def on_close(ws):
+    os.system("python3 /var/www/pione/Scripts/socket_subscribe.py")
     print("### closed ###")
 
 def on_open(ws):
     def run(*args):
-        for i in range(1000):
+        for i in range(10):
             time.sleep(1)
             ws.send(json.dumps(
         {'type': 'auth',
@@ -44,7 +45,7 @@ def on_open(ws):
 
 if __name__ == "__main__":
     websocket.enableTrace(True)
-    ws = websocket.WebSocketApp("wss://bjornmulder.duckdns.org:8123/api/websocket",
+    ws = websocket.WebSocketApp("ws://192.168.86.41:8123/api/websocket",
                               on_message = on_message,
                               on_error = on_error,
                               on_close = on_close)
